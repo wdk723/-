@@ -1,0 +1,48 @@
+#include<stdio.h>
+int zao_renlen(char* arr)
+{
+	int a = 0;
+	while (*arr != '\0')
+	{
+		a++;
+		arr++;
+	}
+	return a;
+}
+//方法一：指针法
+void chuang_dao(char* arr)
+{
+	int left = 0;
+	int right = zao_renlen(arr) - 1;
+	while (left < right)
+	{
+		
+		int mun = arr[left];
+		arr[left] = arr[right];
+		arr[right] = mun;
+		left++;
+		right--;
+	}
+}
+方法二：递归法
+char left = *arr;
+	char len = zao_renlen(arr);
+	*arr = *(arr+len-1);
+	*(arr + len - 1) = '\0';
+	if (zao_renlen(arr+1) >= 2)
+	{
+		chuang_dao(arr+1);
+	}
+	*(arr + len - 1) = left;
+
+
+int main()
+{
+	char arr[] = "abcdef";
+	chuang_dao(arr);
+	printf("%s\n", arr);
+	return 0;
+}
+-----------------------------------------
+  题目：将‘abcdef’调换成‘fedcba’
+  
