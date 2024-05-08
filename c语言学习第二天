@@ -1,0 +1,41 @@
+#include<stdio.h>
+
+int han_gun(int i)
+{
+	if (i > 9)
+	{
+		return han_gun(i / 10) + i % 10;
+	}
+	else
+		return i;
+}
+int main()
+{
+	int num = 1729;
+	int a=han_gun(num);
+	printf("%d", a);
+	return 0;
+}
+----------------------------------
+题目：将数字的个十百位分开相加得出结果
+
+
+  double chuag(int x, int y)
+{
+	if (y == 0)
+		return 1.0;
+	else if (y > 0)
+		return x * chuag(x, y-1);
+	else
+		return 1.0 / x * chuag(x, -y);
+}
+int main()
+{
+	int a = 0;
+	int b = 0;
+	scanf_s("%d %d", &a, &b);
+	double c=chuag(a, b);
+	printf("%lf", c);
+	return 0;
+}
+实现n的k次方
